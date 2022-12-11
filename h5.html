@@ -1,0 +1,64 @@
+<html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css" />
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>galafajter.tv - player</title>
+<style>
+body {
+    font-family: 'Montserrat';font-size: 16px;
+    color: white;
+}
+</style>
+<!--Add a Simple HTML5 Video tag-->
+<center> <div style="width:1280px;height:720px">
+
+<img src="https://cdn.discordapp.com/attachments/976917247069130832/976918300334362674/galafajter.png" width="295" height="60">
+<br>
+</br>
+
+
+<div id="container">
+  <video controls data-poster="https://cdn.discordapp.com/attachments/976917247069130832/1050127747059560488/bn32vg3kg69na8ztp7syfiz49vczv2r8.jpg" class="vid1">
+    <!-- Video files -->
+    <source src="https://ia904706.us.archive.org/22/items/xbm-eae24-537g-h5-720/XBmH399Mo0lru.mp4" type="video/mp4" size="720" />
+<video>
+
+
+  </video>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js"></script>
+
+<script>
+  var controls =
+[
+    'play-large', // The large play button in the center
+   // 'rewind', // Rewind by the seek time (default 10 seconds)
+    'play', // Play/pause playback
+    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+    'progress', // The progress bar and scrubber for playback and buffering
+    'current-time', // The current time of playback
+    'duration', // The full duration of the media
+    'mute', // Toggle mute
+    'volume', // Volume control
+    'settings', // Settings menu
+    'fullscreen' // Toggle fullscreen
+];
+
+  const player = new Plyr('.vid1',{controls});
+</script>
+
+<style>
+  :root {
+  --plyr-color-main: #b8202d;
+    --plyr-video-control-color  :#ffffff;
+    --plyr-control-icon-size:  25px   ;
+
+}
+
+</style>
+
+<center> <h2> Poczekaj, aż wideo się załaduje </h2> </center>
+
+<body style="background-color:121212;">
+<body oncontextmenu="return false;" >

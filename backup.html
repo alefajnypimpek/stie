@@ -15,7 +15,37 @@ body {
 <h2>wyjebane jajca tv</h2>
 <br>
 
-<div style="width:100%;height:0px;position:relative;padding-bottom:56.338%;"><iframe src="https://streamable.com/e/k4310g" frameborder="0" width="1280px" height="720px" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+<div id="container">
+  <video controls data-poster="https://images.drivereasy.com/wp-content/uploads/2017/10/this-video-is-not-available-1.jpg" class="vid1">
+    <!-- Video files -->
+    <source src="https://files.catbox.moe/c8n7g0.mp4" type="video/mp4" size="720" />
+<video>
+
+
+  </video>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js"></script>
+
+<script>
+  var controls =
+[
+    'play-large', // The large play button in the center
+   // 'rewind', // Rewind by the seek time (default 10 seconds)
+    'play', // Play/pause playback
+    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+    'progress', // The progress bar and scrubber for playback and buffering
+    'current-time', // The current time of playback
+    'duration', // The full duration of the media
+    'mute', // Toggle mute
+    'volume', // Volume control
+    'settings', // Settings menu
+    'fullscreen' // Toggle fullscreen
+];
+
+  const player = new Plyr('.vid1',{controls});
+</script>
 
 <p> kocham administracje youtube </p>
 
@@ -37,3 +67,8 @@ font-size: 40px;
 a {
 color: white;
 }
+
+  :root {
+  --plyr-color-main: #b8202d;
+    --plyr-video-control-color  :#ffffff;
+    --plyr-control-icon-size:  25px   ;

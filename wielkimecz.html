@@ -1,0 +1,90 @@
+<html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css" />
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="stylesheet" href="a.css" />
+    <title>garbaty.tv - player</title>
+<style>
+body {
+    font-family: 'Montserrat';font-size: 16px;
+    color: white;
+}
+</style>
+<!--Add a Simple HTML5 Video tag-->
+<center> <div style="width:1280px;height:720px">
+
+<br>
+<h1>Puchar Polski: Ruch Chorzów - Górnik Zabrze</h1>
+<br>
+
+
+<div id="container">
+  <video controls data-poster="https://sport1.pl/wp-content/uploads/2022/09/ruch-gornik-1024x576.jpg" class="vid1">
+    <!-- Video files -->
+    <source src="http://ipla-e1-90.pluscdn.pl/p/vm2movies/tw/twiq8teb78tg549thb2x4xaj8yr59z5f.mp4" type="video/mp4" size="1080" />
+    <source src="http://ipla-e2-17.pluscdn.pl/p/vm2movies/b1/b1buhy4j8z56pb3sv1mx65z9rau6r41b.mp4" type="video/mp4" size="720" />
+    <source src="http://ipla-e1-77.pluscdn.pl/p/vm2movies/j3/j3ex8fc9q3s8ew3s5b3xbf626ikawjdn.mp4" type="video/mp4" size="576" />
+<video>
+
+
+  </video>
+</div>
+    
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-item-header">
+      Szczegóły meczu
+    </div>
+    <div class="accordion-item-body">
+      <div class="accordion-item-body-content">
+        <h2>Ruch Chorzów <span><b> 0 - 1 </b></span> Górnik Zabrze</h2>
+     <br>
+      <h2><span><b>41% </b></span>Posiadanie piłki<span><b> 59% </b></span></h2>
+      <br>
+        <h2><span><b>5 </b></span>Strzały<span><b> 14</b></span></h2>   <br>
+           <h2><span><b>4 </b></span>Kartki<span><b> 3</b></span></h2>  <br>
+           <h2><span><b>11 </b></span>Faule<span><b> 13</b></span></h2>  <br>
+                 <h2><span><b>14 </b></span>Rzuty wolne<span><b> 13</b></span></h2>  <br>
+            <h2><span><b>3 </b></span>Rzuty rożne<span><b> 4</b></span></h2>    <br>
+               <h2>Sędzia: Sebastian Jarzębak</h2>  
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+  var controls =
+[
+    'play-large', // The large play button in the center
+   // 'rewind', // Rewind by the seek time (default 10 seconds)
+    'play', // Play/pause playback
+    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+    'progress', // The progress bar and scrubber for playback and buffering
+    'current-time', // The current time of playback
+    'duration', // The full duration of the media
+    'mute', // Toggle mute
+    'volume', // Volume control
+    'settings', // Settings menu
+    'fullscreen' // Toggle fullscreen
+];
+
+  const player = new Plyr('.vid1',{controls});
+</script>
+
+<style>
+  :root {
+  --plyr-color-main: #b8202d;
+    --plyr-video-control-color  :#ffffff;
+    --plyr-control-icon-size:  25px   ;
+
+}
+
+</style>
+
+<body style="background-color:121212;">
+<body oncontextmenu="return false;" >

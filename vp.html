@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <meta name="og:title" content="Eleven Sports 1">
+    <meta name="og:description" content="powered by discord stan">
+    <meta name="og:image" content="https://malpatv.netlify.app/stan.png">
+    <title>eleven 1</title>
+    <style>
+        body {
+            cursor: url(https://i.imgur.com/TQqwfCx.png), auto;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+
+        #player {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .hidden {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0000;
+            font-size: 20px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        #soundFrame {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js" disable-devtool-auto></script>
+</head>
+
+<body>
+    <?php
+    $allowed_domains = array("malpatv.netlify.app", "iframetester.com");
+    $referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    $allowed = false;
+    foreach ($allowed_domains as $domain) {
+        if (strpos($referrer, $domain) !== false) {
+            $allowed = true;
+            break;
+        }
+    }
+    if (!$allowed) {
+        http_response_code(404);
+        include('404.html');
+        exit;
+    }
+    ?>
+    <div class="container">
+        <div id="player"></div>
+    </div>
+    <script>
+        var player = new Clappr.Player({
+            source: "https://lb2-e2-18.pluscdn.pl/ch/1457744/147/dash/4867711b/live.mpd",
+            plugins: [LevelSelector, DashShakaPlayback],
+            shakaConfiguration: {
+                drm: {
+                    clearKeys: {
+                        "7a8999b23a1351c1a40d70cff95a6ae6": "b593085e2c1ec802b421989873b1211e",
+                        "75b81df7229058d48ef4ac58a617767b": "710ee9042e1845924202a33e3597adb7",
+                        "5de78c102a9953fd818238d8c1a4dd0b": "93d24c93841d6f1638161d30b522a66e",
+                        "95301f66083f5e0fb6a0a47b97b29bbb": "8620f44141c4034d13b5f259ab1a9a75",
+                        "c4b178813d8b5182b1c035fbf1d84c99": "614e9f6b65932b672dedd2d87f249f77"
+                    }
+                }
+            },
+            autoPlay: true,
+            muted: false,
+            width: "100%",
+            height: "100%",
+            poster: "https://cdn.speedwayekstraliga.pl/2019/03/tla-partnerzy-Eleven.jpg",
+            watermark: "",
+            parentId: "#player",
+            mediacontrol: {
+                seekbar: "#E52C7B",
+                buttons: "#E52C7B"
+            }
+        });
+    </script>
+</body>
+</html>

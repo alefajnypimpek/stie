@@ -1,34 +1,61 @@
-<html>
-<title>maupatv</title>
-  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.7tv.app/emote/60b35b423c9b35aea9c15223/3x.png" />
-<div><img src="https://iili.io/HvU8SPn.jpg" width="300" height="300"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chłopaki z Raszei | bigwbita.xyz</title>
+    <meta name="og:title" content="Chłopaki z Raszei">
+    <meta name="og:description" content="Codzienne życie Mariusza i Jacka na Raszei 4C w Toruniu">
+    <meta name="og:image" content="https://yt3.googleusercontent.com/CafhWa7iL2dLPZE_iKTo0w6aHGGmRfKWZ4tZ0qmNOjEuqvxOkgSDqKRK_flJ4haQEclegPhr2Q=s900-c-k-c0x00ffffff-no-rj">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/06GgOea.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/06GgOea.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/06GgOea.png">
+    <link rel="mask-icon" href="https://i.imgur.com/06GgOea.png" color="#73480D">
+    <meta name="msapplication-TileColor" content="#73480D">
+    <meta name="theme-color" content="#73480D">
+    <link rel="stylesheet" href="https://raszei.vercel.app/style.css">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+    <header class="header">
+        <a href="https://player.kick.com/robaczkilive" target="ramkaVid" id="zmiana" class="logo"></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+<nav class="navbar">
+    <a href="https://www.youtube.com/embed/gWWbJU8od5s?si=nEx4Gp0E7xX_X1Js" target="ramkaVid" style="--i:0;">Ukry</a>
+    <a href="https://raszei.vercel.app/warszawska" target="ramkaVid" style="--i:1;">Pabianice - Warszawska</a>
+    <a href="https://meow.camera/viewer/#4585092304569920853" target="ramkaVid" style="--i:2;">Koty</a>
+    <a href="https://dktr.pl:10343/3c81edf9-30cc-48b9-90b9-021129e0767d.html" target="ramkaVid" scrolling="no" style="--i:3;">Bocian</a>
+    <a href="https://archiwumraszejskie.vercel.app" target="_blank" scrolling="no" style="--i:4;">Archiwum</a>
+    </nav>
+    </header>
+    <div class="video">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/gWWbJU8od5s?si=nEx4Gp0E7xX_X1Js" scrolling="no" frameborder="0" allow="autoplay" allowfullscreen name="ramkaVid"></iframe>
+    </div>
+    <div class="chat">
+        <iframe width="100%" height="100%" frameborder="0" allowfullscreen name="chat" src="https://raszei.vercel.app/czat"></iframe>
+        </div>
+        <div class="mobile-nav">
+              <a href="https://raszei.vercel.app/warszawska" target="ramkaVid" scrolling="no"><i class="fa-solid fa-house"></i></a>
+              <a href="https://www.youtube.com/embed/gWWbJU8od5s?si=nEx4Gp0E7xX_X1Js" target="ramkaVid" scrolling="no"><i class="fa-solid fa-wine-bottle"></i></a>
+              <a href="https://dktr.pl:10343/3c81edf9-30cc-48b9-90b9-021129e0767d.html" target="ramkaVid" scrolling="no"><i class="fa-solid fa-crow"></i></a>
+        </div>
+    </body>
+<script>
+  // header
+    var headers = ["bigwbita.xyz"];
+var lastheader = -1;
 
-
-<style>
-body {
-  background-color: #000000;
+function newHeader() {
+   if (++lastheader >= headers.length)
+     lastheader = 0;
+   document.getElementById("zmiana").innerText = headers[lastheader];
 }
-html, body
-{
-    height: 100%;
-    margin:0;
-    padding:0;
-}
-
-div {
-    position:relative;
-    height: 100%;
-    width:100%;
-}
-
-div img {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-}
-
-
-</style>
+newHeader();
+setInterval(newHeader, 5000);
+</script>
+</html>

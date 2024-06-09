@@ -61,7 +61,7 @@
 
 <body>
     <?php
-    $allowed_domains = array("malpatv.netlify.app", "iframetester.com");
+    $allowed_domains = array("bigwbita.xyz", "iframetester.com");
     $referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
     $allowed = false;
     foreach ($allowed_domains as $domain) {

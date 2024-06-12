@@ -10,8 +10,10 @@
 <body>
     <center>
     <div class="video">
-        <iframe width="1280px" height="720px" src="/pl/e1" scrolling="no" frameborder="0" allowfullscreen name="ramkaVid"></iframe>
+        <iframe width="100%" height="100%" src="/pl/e1" scrolling="no" frameborder="0" allowfullscreen name="ramkaVid"></iframe>
       </div><br>
+      <div class="jakosci">
+        <br>
       <a href="" target="ramkaVid" style="color: rgb(247, 6, 6);font-weight: 600;">POLSKI:</a> 
       <a href="/pl/e1" target="ramkaVid" style="color: rgb(255, 255, 255);">FULL HD</a> | 
       <a href="/pl/e1-v2" target="ramkaVid" style="color: rgb(255, 255, 255);">HD</a><br><br>
@@ -21,6 +23,10 @@
       <a href="" target="ramkaVid" style="color: rgb(61, 211, 31);font-weight: 600;">BEZ REKLAM:</a> 
       <a href="https://embedme.top/embed/24-hours-of-le-mans-qualifying-practice/1" target="ramkaVid" style="color: rgb(255, 255, 255);">ANGIELSKI HD</a> |
       <a href="https://voodc.com/embed/858a928f9b85839887998387948b988a86.html" target="ramkaVid" style="color: rgb(255, 255, 255);">POLSKI HD</a>
+    </div>
+    <div class="tabela">
+        <iframe width="100%" height="100%" src="https://live.fiawec.com/en/live" scrolling="no" frameborder="0" name="tabela"></iframe>
+    </div>
     </center>
 </body>
 <style>
@@ -33,5 +39,56 @@
         color: white;
         font-family: arial;
     }
+    .video {
+       width: 70vw; 
+       height: 79vh; 
+       overflow: hidden;
+       position: relative; 
+       display: inline-block; 
+       padding-right: 0;
+       float: left;
+    }
+    .jakosci {
+        float: left;
+        margin-left: 24%;
+    }
+    .tabela {
+       width: 29vw; 
+       height: 79vh; 
+       overflow: hidden;
+       position: relative; 
+       display: inline-block; 
+       padding-right: 0;
+       float: right;
+       top: 0;
+       position: sticky;
+       margin-top: -39.2vw;
+    }
+
+    @media (max-width: 1052px) {
+        .video {
+      width: 98vw;
+      height: 55vw;
+      display: block;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      float:none;	
+  }
+      .tabela {
+      width : 98vw;
+      height: 100vw;
+      display: block;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+      float:none;
+      overscroll-behavior-y: none;
+  }
+  .jakosci {
+        margin-left: 24%;
+    }
+}
 </style>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <style>
+        body {
+            cursor: url(https://i.imgur.com/TQqwfCx.png), auto;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+
+        #player {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .hidden {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0000;
+            font-size: 20px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        #soundFrame {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js" disable-devtool-auto></script>
+</head>
+
+<body>
+    <?php
+    $allowed_domains = array("malpatv.netlify.app", "iframetester.com");
+    $referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    $allowed = false;
+    foreach ($allowed_domains as $domain) {
+        if (strpos($referrer, $domain) !== false) {
+            $allowed = true;
+            break;
+        }
+    }
+    if (!$allowed) {
+        http_response_code(404);
+        include('404.html');
+        exit;
+    }
+    ?>
+    <div class="container">
+        <div id="player"></div>
+    </div>
+    <script>
+        var player = new Clappr.Player({
+            source: "https://prd.jwpltx.com/v1/jwplayer6/ping.gif?h=782037368&e=s&n=4743252637937405&aid=gz_FBsVMEeWiQBKCk4Wcgw&amp=0&at=1&c=-1&ccp=0&cp=0&d=0&eb=0&ed=6&emi=14ub5pj168i0&i=1&lid=zew38x167lmm&lsa=read&mt=0&pbd=1&pbr=1&pgi=nobafl1t3yxu&ph=1&pid=KB5zFt7A&pii=0&pl=394&plc=1&pli=1vni10e1b87g&pp=shaka&ppm=DVR&prc=1&ps=4&pss=1&pt=&pu=https%3A%2F%2Fstrims.in%2F&pv=8.34.1&pyc=1&s=1&sdk=0&stc=1&stpe=0&tv=4.0.5&vb=1&vi=1&vl=100&wd=700&abm=0&bwe=136229&cae=0&cct=0&ch=2&cdid=player&drm=0&ff=250&fsm=0&l=0&mk=dash&mu=https%3A%2F%2Fnlziet-live.akamaized.net%2FL6%2F76fd047c%2Fc427bd9d.isml%2F.mpd&pcp=1718451749&pd=2&plng=pl&pni=0&pr=1&q=0&qcr=initial%20choice&sbr=7628&sp=0&strt=250&tb=1718451750.7&tt=0&vd=-7184&vh=1080&vs=5&vw=1920&sa=1718451799732",
+            plugins: [LevelSelector, DashShakaPlayback],
+            shakaConfiguration: {
+                drm: {
+                    clearKeys: {
+                      "7545f9301bf94e7a9132dccf32920e51": "94fc134c1b1cb1ea9075781417eca48b"
+                    }
+                }
+            },
+            autoPlay: true,
+            muted: false,
+            width: "100%",
+            height: "100%",
+            poster: "https://wykop.pl/cdn/c3201142/39bf786a9ada8033aaaa16cbae7e6e01e378cd813ba64cff0f0601c5c93128ab.jpg",
+            watermark: "",
+            parentId: "#player",
+            mediacontrol: {
+                seekbar: "#de0161",
+                buttons: "#de0161"
+            }
+        });
+    </script>
+</body>
+</html>

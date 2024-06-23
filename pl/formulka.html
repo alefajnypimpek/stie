@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <meta name="og:title" content="Viaplay">
+    <meta name="og:description" content="powered by discord stan">
+    <meta name="og:image" content="/stan.png">
+    <style>
+        body {
+            cursor: url(https://i.imgur.com/TQqwfCx.png), auto;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+
+        #player {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .hidden {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0000;
+            font-size: 20px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        #soundFrame {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js" disable-devtool-auto></script>
+</head>
+
+<body>
+    <?php
+    $allowed_domains = array("malpatv.netlify.app", "iframetester.com");
+    $referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    $allowed = false;
+    foreach ($allowed_domains as $domain) {
+        if (strpos($referrer, $domain) !== false) {
+            $allowed = true;
+            break;
+        }
+    }
+    if (!$allowed) {
+        http_response_code(404);
+        include('404.html');
+        exit;
+    }
+    ?>
+    <div class="container">
+        <div id="player"></div>
+    </div>
+    <script>
+        var player = new Clappr.Player({
+            source: "https://live-b-dash-cdn7-vp.cdn.viaplay.tv/vp/xtra67/xtra67.isml/index.mpd",
+            plugins: [LevelSelector, DashShakaPlayback],
+            shakaConfiguration: {
+                drm: {
+                    clearKeys: {
+                      "56ea21f9a1d355a0a026f5572333b54b": "c85d33a9390edd35181575331c5279ec",
+                      "6096ab3b418f59dc87a777509d56fdbb": "c754ef4ec395423d55495776401642a1",
+                      "0e6f56f61a1b5d63b8ec5cbb4db576b9": "c7fcfd443c9dc2612cf9fe908d643f22",
+                      "c8063f8229d756e186cfcd4b45d29dfb": "6f771079c4f2d0bd720c1ea41fa1210c"
+                    }
+                }
+            },
+            autoPlay: true,
+            muted: false,
+            width: "100%",
+            height: "100%",
+            poster: "https://i1.kwejk.pl/k/obrazki/2019/11/RSF32XcDG44xHbbo.jpg",
+            watermark: "",
+            parentId: "#player",
+            mediacontrol: {
+                seekbar: "#29B0EB",
+                buttons: "#0EEEE7"
+            }
+        });
+    </script>
+</body>
+</html>

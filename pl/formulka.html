@@ -9,7 +9,7 @@
     <meta name="og:image" content="/stan.png">
     <style>
         body {
-            cursor: url(https://i.imgur.com/TQqwfCx.png), auto;
+            cursor: url(https://i.nuuls.com/CVmvt.png), auto;
             background: #000;
             margin: 0;
             padding: 0;
@@ -58,6 +58,13 @@
     <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js'></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@latest/dist/hlsjs-playback.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-markers-plugin@latest/dist/clappr-markers-plugin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-capture-plugin@latest/dist/clappr-capture-plugin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js" disable-devtool-auto></script>
 </head>
 
@@ -84,8 +91,16 @@
     <script>
         var player = new Clappr.Player({
             source: "https://live-b-dash-cdn7-vp.cdn.viaplay.tv/vp/xtra69/xtra69.isml/index.mpd?t=2024-06-23T11%3A55%3A00.000-2024-06-23T16%3A00%3A00.000&filter=(FourCC%3D%3D%22AVC1%22%26%26systemBitrate%3C6200000%26%26systemBitrate%3E0%26%26framerate%3C60%26%26maxHeight%3C721)%7C%7C(type%3D%3D%22audio%22%26%26FourCC%3D%3D%22AACL%22%26%26systemLanguage%3D%3D%22swe%22)&CMCD=cid%3D%22S24052900554246964%22%2Cot%3Dm%2Csf%3Dd%2Csid%3D%22-ssmXPW-yIdChRhb308lUCvQytb4JmEUuO7t1fOcl6Q%22%2Csu",
-            plugins: [LevelSelector, DashShakaPlayback],
+            plugins: [LevelSelector, DashShakaPlayback, ClapprNerdStats, ClapprMarkersPlugin, ClapprStats, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, Clappr.MediaControl, ClapprCapturePlugin, PlaybackRatePlugin],
             shakaConfiguration: {
+              markersPlugin: {
+                    markers: markers,
+                    tooltipBottomMargin: 17
+            },
+                    clapprNerdStats: {
+                    shortcut: ['command+shift+s', 'ctrl+shift+s'],
+                    iconPosition: 'top-left'
+            },
                 drm: {
                     clearKeys: {
                       "d38c6751e767521e9f53ac7d8944c63b": "189a174bf050855de15c1488edbcae2d",
@@ -94,8 +109,9 @@
                       "121e094e626e5c2db7ffcd274dd9aa7a": "7a391a2853c0182ef4886b25227f7f1c"
                     }
                 }
+                
             },
-            autoPlay: true,
+            autoPlay: false,
             muted: false,
             width: "100%",
             height: "100%",

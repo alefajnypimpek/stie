@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html{scrollbar-width:thin}html,body{width:100%!important;height:100%!important;color:#1c2733;margin: 0px auto;padding:0;background:#171717;}
+</style>
+<title></title>
+<style>
+
+button[data-playback-rate-button]{white-space:nowrap}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select]{float:right;margin-top:5px;position:relative;line-height:1em;overflow-wrap:normal}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] button.media-control-button.media-control-icon{font-family:Roboto,"Open Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased;font-size:12px;cursor:pointer;padding:10px;width:auto;height:auto}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] button.media-control-button.media-control-icon:hover{color:#c9c9c9}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] button.media-control-button.media-control-icon.changing{-webkit-animation:pulse 0.5s infinite alternate}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select]>ul{display:none;list-style-type:none;position:absolute;bottom:35px;border:1px solid black;border-radius:4px;background-color:rgba(0,0,0,0.7)}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li{position:relative;font-size:12px;line-height:1em}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li[data-title]{padding:5px}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li a{color:#aaa;padding:5px 10px 5px 15px;display:block;text-decoration:none}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li a.active{background-color:#000;font-weight:bold;color:#fff}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li a.active:before{content:'\2713';position:absolute;top:5px;left:4px}.media-control[data-media-control] .media-control-layer[data-controls] .playback_rate[data-playback-rate-select] li a:hover{color:#fff;text-decoration:none}@-webkit-keyframes pulse{0%{color:#fff}50%{color:#ff0101}100%{color:#B80000}}
+</style>
+<style>
+.chromecast-playback{height:100%;width:100%}.chromecast-playback .chromecast-playback-background,.chromecast-playback .chromecast-playback-overlay{position:absolute;height:100%;width:100%}.chromecast-playback .chromecast-playback-background{background-size:contain}.chromecast-playback .chromecast-playback-overlay{background-color:#000;opacity:.4}.chromecast-button{background:transparent;border:0;width:32px;height:32px;font-size:22px;line-height:32px;letter-spacing:0;margin:0 6px;color:#fff;opacity:.5;vertical-align:middle;text-align:left;cursor:pointer;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transition:all .1s ease}.chromecast-button:hover{opacity:.75;text-shadow:hsla(0,0%,100%,.8) 0 0 5px}.chromecast-button:focus{outline:none}.chromecast-button svg{width:24px;height:24px}.chromecast-button svg #cast,.chromecast-button svg #cast-on,.chromecast-button svg #Path{fill:#fff;stroke:#fff;stroke-width:.5px}
+</style>
+<style>
+@font-face{font-family:Roboto;font-style:normal;font-weight:400;src:local("Roboto"),local("Roboto-Regular"),url(https://cdn.jsdelivr.net/npm/clappr/dist/38861cba61c66739c1452c3a71e39852.ttf) format("truetype")}
+</style>
+<style>
+body {
+cursor: url(https://i.nuuls.com/CVmvt.png), auto;
+}
+</style>
+<style>
+:root{--plyr-video-control-background-hover:rgba(156,136,255,.9);--plyr-color-main:#9c88ff}body{box-sizing:border-box;background:#000;font-family:sans-serif;margin:0}*{text-decoration:none}.albaplayer_videos_channel{position:absolute;z-index:999;left:8px;top:-20px;right:8px;height:0}.albaplayer_videos_channel .button{background:;cursor:pointer;font-size:25px;float:right;display:block;border-radius:2px;height:20px;text-align:center;line-height:20px;text-shadow:0 1px 1px #000;color:#fff;padding:25px 0px;font-family:sans-serif;position:relative;z-index:99}.albaplayer_videos_channel .refresh{float:right}
+</style>
+</head>
+<body>
+<script src='//cdn.jsdelivr.net/npm/clappr/dist/clappr.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js'></script>
+<script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js'></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@latest/dist/hlsjs-playback.min.js"></script>
+<script src="//cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clappr-markers-plugin@latest/dist/clappr-markers-plugin.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr-capture-plugin@latest/dist/clappr-capture-plugin.js"></script>
+<div style='position:fixed;bottom:0;right:0;top:0;left:0;z-index:999;' id="player"></div>
+<script>
+function getRandomElement(arr) {
+return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateSourceUrl() {
+const cities = ['waw', 'krk', 'poz', 'wro', 'bzg', 'ktw', 'wmi', 'rze', 'rdo', 'szy', 'lcj', 'szz', 'luz', 'gdn'];
+const city = getRandomElement(cities);
+const ec = String(Math.floor(Math.random() * 6) + 1).padStart(2, '0');
+const number = Math.floor(Math.random() * 6) + 1;
+return `https://ec${ec}-${city}${number}.cache.orange.pl/dai4/org1/vb/104/tvp1hd/manifest.mpd`;
+}
+
+async function getValidSourceUrl() {
+let url;
+let valid = false;
+
+while (!valid) {
+url = generateSourceUrl();
+try {
+const response = await fetch(url, { method: 'HEAD' });
+if (response.ok) {
+valid = true;
+}
+} catch (error) {
+console.error(`URL ${url} nie działa, generowanie nowego...`);
+}
+}
+
+return url;
+}
+
+async function initPlayer() {
+const sourceUrl = await getValidSourceUrl();
+
+var markerInfo = [
+[300, "first"],
+[1200, "middle"],
+[5700, "last"]
+];
+var markers = [];
+for (var i = 0; i < markerInfo.length; i++) {
+var info = markerInfo[i];
+markers.push(new ClapprMarkersPlugin.StandardMarker(info[0], info[1]));
+}
+
+var player = new Clappr.Player({
+source: sourceUrl,
+parentId: '#player',
+plugins: [
+ClapprNerdStats, ClapprStats, ClapprMarkersPlugin, LevelSelector,
+ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback,
+Clappr.MediaControl, PlaybackRatePlugin, ClapprCapturePlugin
+],
+markersPlugin: {
+markers: markers,
+tooltipBottomMargin: 17
+},
+clapprNerdStats: {
+shortcut: ['command+shift+s', 'ctrl+shift+s'],
+iconPosition: 'top-left'
+},
+events: {
+onReady: function() {
+var plugin = this.getPlugin('click_to_pause');
+plugin && plugin.disable();
+}
+},
+height: '100vh',
+width: '100vw',
+autoPlay: false,
+poster: "https://static-cdn.jtvnw.net/previews-ttv/live_user_demonzz1-1920x1080.png",
+watermark: "",
+position: "top-right",
+shakaConfiguration: {	
+manifest: { retryParameters: { maxAttempts: Infinity }},
+streaming: { retryParameters: { maxAttempts: Infinity }},
+drm: { retryParameters: { maxAttempts: Infinity }}
+},
+mediacontrol: {
+seekbar: "#dd9ecd",
+buttons: "#e32636"
+}
+});
+
+player.core.mediaControl.on('capture:base64', (b64) => {
+var myWindow = window.open("", "PictureWindow");
+myWindow.document.write(`<img src="${b64}" />`);
+});
+}
+
+window.onload = initPlayer;
+</script>
+<div class="albaplayer_videos_channel">
+<a class="button refresh" href="javascript:window.location.reload()" title="Refresh Player">↺</a>
+</div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'899767ebdead34e8',t:'MTcxOTM0NDE4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

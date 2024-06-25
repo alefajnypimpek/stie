@@ -86,7 +86,7 @@
     <script>
         var player = new Clappr.Player({
             source: "https://live-b-dash-cdn7-vp.cdn.viaplay.tv/vp/xtra69/xtra69.isml/index.mpd?t=2024-06-23T11%3A55%3A00.000-2024-06-23T16%3A00%3A00.000&filter=(FourCC%3D%3D%22AVC1%22%26%26systemBitrate%3C6200000%26%26systemBitrate%3E0%26%26framerate%3C60%26%26maxHeight%3C721)%7C%7C(type%3D%3D%22audio%22%26%26FourCC%3D%3D%22AACL%22%26%26systemLanguage%3D%3D%22swe%22)&CMCD=cid%3D%22S24052900554246964%22%2Cot%3Dm%2Csf%3Dd%2Csid%3D%22-ssmXPW-yIdChRhb308lUCvQytb4JmEUuO7t1fOcl6Q%22%2Csu",
-            plugins: [LevelSelector, DashShakaPlayback, ClapprCapturePlugin, ClapprPip.PipButton, ClapprPip.PipPlugin],
+            plugins: [LevelSelector, DashShakaPlayback, ClapprPip.PipButton, ClapprPip.PipPlugin],
             shakaConfiguration: {
                 drm: {
                     clearKeys: {
@@ -107,10 +107,6 @@
             mediacontrol: {
                 seekbar: "#29B0EB",
                 buttons: "#0EEEE7"
-            player.core.mediaControl.on('capture:base64', (b64) => {
-            var myWindow = window.open("", "PictureWindow");
-            myWindow.document.write(`<img src="${b64}" />`);
-            });
             }
         });
     </script>

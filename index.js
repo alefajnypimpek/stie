@@ -46,6 +46,9 @@ const VIDEOS = [
   'assets/kretacz/cword.mp4',
   'assets/kretacz/dzwiek.mp4',
   'assets/kretacz/gaber.mp4',
+  'assets/kretacz/tt.mp4',
+  'assets/kretacz/automaty.mp4',
+  'assets/kretacz/piwo.mp4',
 ]
 
 const FILE_DOWNLOADS = [
@@ -55,17 +58,15 @@ const FILE_DOWNLOADS = [
   'assets/kretacz/l4.png',
   'assets/kretacz/l5.png',
   'assets/kretacz/l6.png',
+  'assets/kretacz/l7.png',
 ]
 
 const PHRASES = [
   'hello my name is wbita',
   'jaramy ziolo',
-  'wgl co u cb bo u mn dbr',
   'lylu dlaczego oszukales widzow',
-  'hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw',
-  'abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz',
-  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak',
-  'eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo eyo'
+  'zajebac czaruchow',
+  'nigger',
 ]
 
 
@@ -216,7 +217,7 @@ function initParentWindow () {
       removeHelloMessage()
       rainbowThemeColor()
       animateUrlWithEmojis()
-      speak('To był błąd')
+      speak('zwal mi kołnika')
     }
   })
 }
@@ -576,45 +577,6 @@ function speak (phrase) {
   window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(phrase))
 }
 
-/**
- * Start an annoying theramin that changes pitch and volume depending on
- * the mouse position. Uses a Web Audio oscillator. Reauires user-initiated
- * event.
- * Based on https://github.com/feross/TheAnnoyingSite.com/pull/2
- */
-function startTheramin () {
-  const audioContext = new AudioContext()
-  const oscillatorNode = audioContext.createOscillator()
-  const gainNode = audioContext.createGain()
-
-  const pitchBase = 50
-  const pitchRange = 4000
-
-  const wave = audioContext.createPeriodicWave(
-    Array(10).fill(0).map((v, i) => Math.cos(i)),
-    Array(10).fill(0).map((v, i) => Math.sin(i))
-  )
-
-  oscillatorNode.setPeriodicWave(wave)
-
-  oscillatorNode.connect(gainNode)
-  gainNode.connect(audioContext.destination)
-
-  oscillatorNode.start(0)
-
-  const oscillator = ({ pitch, volume }) => {
-    oscillatorNode.frequency.value = pitchBase + pitch * pitchRange
-    gainNode.gain.value = volume * 3
-  }
-
-  document.body.addEventListener('mousemove', event => {
-    const { clientX, clientY } = event
-    const { clientWidth, clientHeight } = document.body
-    const pitch = (clientX - clientWidth / 2) / clientWidth
-    const volume = (clientY - clientHeight / 2) / clientHeight
-    oscillator({ pitch, volume })
-  })
-}
 
 /**
  * Attempt to read the user's clipboard.
@@ -654,8 +616,8 @@ function requestWebauthnAttestation () {
         // User:
         user: {
           id: new Uint8Array(16),
-          name: 'lolica@jaczup.me',
-          displayName: 'Ptoszek Jaczupa'
+          name: 'bigwbita@ziolo.pl',
+          displayName: 'bigwbita'
         },
 
         pubKeyCredParams: [{
@@ -943,79 +905,6 @@ function requestFullscreen () {
   requestFullscreen.call(document.body)
 }
 
-/**
- * Log the user out of top sites they're logged into, including Google.com.
- * Inspired by https://superlogout.com
- */
-function superLogout () {
-  function cleanup (el, delayCleanup) {
-    if (delayCleanup) {
-      delayCleanup = false
-      return
-    }
-    el.parentNode.removeChild(el)
-  }
-
-  function get (url) {
-    const img = document.createElement('img')
-    img.onload = () => cleanup(img)
-    img.onerror = () => cleanup(img)
-    img.style = HIDDEN_STYLE
-    document.body.appendChild(img)
-    img.src = url
-  }
-
-  function post (url, params) {
-    const iframe = document.createElement('iframe')
-    iframe.style = HIDDEN_STYLE
-    iframe.name = 'iframe' + numSuperLogoutIframes
-    document.body.appendChild(iframe)
-
-    numSuperLogoutIframes += 1
-
-    const form = document.createElement('form')
-    form.style = HIDDEN_STYLE
-
-    let numLoads = 0
-    iframe.onload = iframe.onerror = () => {
-      if (numLoads >= 1) cleanup(iframe)
-      numLoads += 1
-    }
-    form.action = url
-    form.method = 'POST'
-    form.target = iframe.name
-
-    for (const param in params) {
-      if (Object.prototype.hasOwnProperty.call(params, param)) {
-        const input = document.createElement('input')
-        input.type = 'hidden'
-        input.name = param
-        input.value = params[param]
-        form.appendChild(input)
-      }
-    }
-
-    document.body.appendChild(form)
-    form.submit()
-  }
-  for (const name in LOGOUT_SITES) {
-    const method = LOGOUT_SITES[name][0]
-    const url = LOGOUT_SITES[name][1]
-    const params = LOGOUT_SITES[name][2] || {}
-
-    if (method === 'GET') {
-      get(url)
-    } else {
-      post(url, params)
-    }
-
-    const div = document.createElement('div')
-    div.innerText = `Wylogowywanie się z ${name}...`
-
-    const logoutMessages = document.querySelector('.logout-messages')
-    logoutMessages.appendChild(div)
-  }
-}
 
 /**
  * Disable the back button. If the user goes back, send them one page forward ;-)

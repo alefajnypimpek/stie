@@ -82,7 +82,7 @@
     <script>
         var player = new Clappr.Player({
             source: "https://ec04-thinx-waw.cdn-canalplus.pl/live/store01/TVPSport/hd2-dashdrm02/TVPSport.mpd",
-            plugins: [LevelSelector, DashShakaPlayback],
+            plugins: [LevelSelector, DashShakaPlayback, ClapprPip.PipButton, ClapprPip.PipPlugin],
             shakaConfiguration: {
                 drm: {
                     clearKeys: {
@@ -92,7 +92,7 @@
                     }
                 }
             },
-            autoPlay: true,
+            autoPlay: false,
             muted: false,
             width: "100%",
             height: "100%",
